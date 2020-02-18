@@ -24,9 +24,9 @@ sets.each do |set_name, content|
 		char_data["字库"] = set_name
 
 		gb_code = chr.encode('GB2312').ord
-		gb_code_h = (gb_code / 256 - 160).to_s
-		gb_code_l = (gb_code % 256 - 160).to_s
-		char_data["信息交换用汉字编码字符集基本集编码"] = gb_code_h + gb_code_l
+		gb_code_h = (gb_code / 256 - 160)
+		gb_code_l = (gb_code % 256 - 160)
+		char_data["信息交换用汉字编码字符集基本集编码"] = '%02d%02d' % [gb_code_h, gb_code_l]
 
 		char_data["万国码编码"] = chr.encode('GB2312').ord.to_s(16).upcase
 		char_data["拼音"] = pinyin[chr]
